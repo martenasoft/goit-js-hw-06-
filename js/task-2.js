@@ -1,24 +1,24 @@
 class Storage {
+    #items; // Приватна властивість
+
     constructor(initialItems) {
-        this.items = initialItems;
+        this.#items = initialItems; // Ініціалізація приватної властивості
     }
 
     getItems() {
-        return this.items;
+        return this.#items; // Повертаємо масив поточних товарів
     }
 
     addItem(newItem) {
-        this.items.push(newItem);
+        this.#items.push(newItem); // Додаємо новий товар
     }
 
     removeItem(itemToRemove) {
-        const index = this.items.indexOf(itemToRemove);
-        if (index !== -1) {
-            this.items.splice(index, 1);
-        }
+        this.#items = this.#items.filter(item => item !== itemToRemove); // Видаляємо товар
     }
 }
 
+// Код для перевірки роботи класу:
 const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
 
